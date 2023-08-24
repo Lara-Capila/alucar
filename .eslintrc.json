@@ -1,3 +1,39 @@
 {
-  "extends": "next/core-web-vitals"
+  "extends": [
+    "airbnb",
+    "airbnb-typescript",
+    "next",
+    "next/core-web-vitals"
+  ],
+  "parserOptions": {
+    "project": "./tsconfig.json"
+  },
+  "rules": {
+    "react/function-component-definition": ["warn", {
+      "namedComponents": "arrow-function",
+      "unnamedComponents": "arrow-function"
+    }],
+    "react/jsx-props-no-spreading": "off",
+    "import/no-extraneous-dependencies": "off",
+    "@typescript-eslint/no-unused-vars": "warn",
+    "@typescript-eslint/no-use-before-define": "off",
+    "linebreak-style": 0,
+    "jsx-a11y/label-has-associated-control": [
+      2,
+      {
+        "assert": "htmlFor"
+      }
+    ],
+    "jsx-a11y/anchor-is-valid": "off",
+    "import/prefer-default-export": "off",
+    "import/no-anonymous-default-export": "off",
+    "react-hooks/exhaustive-deps": "off",
+    "no-plusplus": "off",
+    "no-console": ["warn", { "allow": ["warn", "error"] }],
+    "max-len": "warn",
+    "react/jsx-no-useless-fragment": "off",
+    "react/require-default-props": "off",
+    "no-underscore-dangle": "off",
+    "@next/next/no-img-element": "off"
+  }
 }
