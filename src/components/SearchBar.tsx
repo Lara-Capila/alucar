@@ -6,7 +6,7 @@ import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { FormEvent, useState } from 'react';
 
-import { updateSearchParams } from '../utils';
+import { updateSearchParams } from '../utils/funtions';
 import SearchManufacturer from './SearchManufacturer';
 
 const SearchButton = ({ otherClasses }: { otherClasses: string }) => (

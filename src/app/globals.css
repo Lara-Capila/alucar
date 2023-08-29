@@ -33,6 +33,11 @@
   font-family: "Manrope", sans-serif;
 }
 
+html {
+  --scroll-behavior: smooth !important;
+  scroll-behavior: smooth !important;
+}
+
 /* START: General styles */
 .max-width {
   @apply max-w-[1440px] mx-auto;

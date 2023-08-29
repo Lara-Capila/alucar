@@ -2,7 +2,7 @@
 
 import { useRouter, useSearchParams } from 'next/navigation';
 import { FC } from 'react';
-import { updateSearchParams } from '../utils';
+import { updateSearchParams } from '../utils/funtions';
 import { Button } from './Button';
 
 interface ShowMoreProps {
@@ -12,8 +12,8 @@ interface ShowMoreProps {
 
 const ShowMore: FC<ShowMoreProps> = ({ isNext, pageNumber }) => {
   const router = useRouter();
-
   const params = useSearchParams();
+
   const model = params.get('model');
   const manufacturer = params.get('manufacturer');
 

@@ -2,9 +2,12 @@
 
 'use client';
 
+import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { FC, useState } from 'react';
-import { calculateCarRent, generateCarImageUrl } from '../utils';
+
+import { calculateCarRent, generateCarImageUrl } from '../utils/funtions';
+import { slideIn } from '../utils/motion';
 import { Button } from './Button';
 import CardDetails from './CardDetails';
 import { CarResponse } from './types/car';
@@ -26,7 +29,14 @@ const CarCard: FC<CarCardProps> = ({ car }) => {
   const rentPrice = calculateCarRent(city_mpg, year);
 
   return (
-    <div className="flex flex-col p-6 justify-center items-start text-black-100 bg-primary-blue-100 hover:bg-white hover:shadow-md rounded-3xl group">
+    <div
+      className="
+        flex flex-col p-6
+        justify-center items-start
+        text-black-100 bg-white
+        hover:bg-blue-50 hover:shadow-md rounded-3xl group
+      "
+    >
       <h2 className="text-lg font-semibold capitalize">
         {make}
         {' '}
@@ -71,9 +81,23 @@ const CarCard: FC<CarCardProps> = ({ car }) => {
         </div>
 
         <div className="hidden group-hover:flex absolute bottom-0 w-full z-10">
-          <Button.Root rounded onClick={() => setIsOpen(true)}>
+          <Button.Root rounded onClick={() => setIsOpen(true)} className="flex justify-around">
             Ver mais
-            <Button.Icon icon="ArrowRightCircleIcon" className="right-0" />
+            <motion.div
+              initial="hidden"
+              whileInView="show"
+              variants={slideIn({
+                type: 'spring',
+                delay: 0.2,
+                direction: 'left',
+                duration: 1.5,
+              })}
+            >
+              <Button.Icon
+                icon="ArrowRightCircleIcon"
+                className="right-0"
+              />
+            </motion.div>
           </Button.Root>
         </div>
       </div>

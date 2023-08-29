@@ -1,9 +1,11 @@
 'use client';
 
 import { Dialog, Transition } from '@headlessui/react';
+import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { FC, Fragment } from 'react';
-import { generateCarImageUrl } from '../utils';
+
+import { generateCarImageUrl } from '../utils/funtions';
 import { CarResponse } from './types/car';
 
 interface CardDetailsProps {
@@ -53,7 +55,13 @@ const CardDetails: FC<CardDetailsProps> = ({ isOpen, closeModal, car }) => (
                 />
               </button>
 
-              <div className="flex-1 flex flex-col gap-3">
+              <motion.div
+                initial={{ y: 10, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                exit={{ y: -10, opacity: 0 }}
+                transition={{ duration: 1 }}
+                className="flex-1 flex flex-col gap-3"
+              >
                 <div className="relative w-full h-40 bg-pattern bg-cover bg-center rounded-lg">
                   <Image src={generateCarImageUrl(car)} alt="car model" fill priority className="object-contain" />
                 </div>
@@ -71,7 +79,7 @@ const CardDetails: FC<CardDetailsProps> = ({ isOpen, closeModal, car }) => (
                     <Image src={generateCarImageUrl(car, '13')} alt="car model" fill priority className="object-contain" />
                   </div>
                 </div>
-              </div>
+              </motion.div>
 
               <div className="flex-1 flex flex-col gap-2 overflow-y-auto pr-1">
                 <h2 className="font-semibold text-xl capitalize">
